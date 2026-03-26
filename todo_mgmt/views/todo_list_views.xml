@@ -1,0 +1,48 @@
+<odoo>
+    <record id="view_todo_list_form" model="ir.ui.view">
+        <field name="name">todo.list.form</field>
+        <field name="model">todo.list</field>
+        <field name="arch" type="xml">
+            <form string="Todo List" edit="status != 'complete'">
+                <header>
+                    <button name="action_confirm" string="Progress" type="object" 
+                            [cite_start]class="oe_highlight" invisible="status != 'draft'"/> [cite: 15, 17]
+                    <button name="action_done" string="Done" type="object" 
+                            [cite_start]class="oe_highlight" invisible="status != 'in_progress'"/> [cite: 85, 87]
+                    <field name="status" widget="statusbar" statusbar_visible="draft,in_progress,complete"/> [cite: 14]
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="tag_ids" widget="many2many_tags"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <notebook>
+                        <page string="List">
+                            <field name="item_ids">
+                                <list editable="bottom"> 
+                                    <field name="name"/>
+                                    <field name="description"/>
+                                    <field name="is_finished" invisible="parent.status != 'in_progress'"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Attendee">
+                            <field name="attendee_ids"/> [cite: 61, 71]
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_todo_list_all" model="ir.actions.act_window">
+        <field name="name">Todo List</field>
+        <field name="res_model">todo.list</field>
+        <field name="view_mode">list,form</field> [cite: 135]
+    </record>
+
+    <menuitem id="menu_todo_root" name="Todo List" sequence="10"/>
+    <menuitem id="menu_todo_list" parent="menu_todo_root" action="action_todo_list_all" name="Todo List"/>
+</odoo>
