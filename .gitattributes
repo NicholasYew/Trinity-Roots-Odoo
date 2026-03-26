@@ -1,2 +1,17 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Python bytecode
+*.py[cod]
+__pycache__/
+
+# Odoo specific
+*.log
+local/
+bin/
+data/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
