@@ -35,17 +35,20 @@
         </field>
     </record>
 
+    <!-- 9. List View as Default Display: This action sets the list (tree) view as default for the module -->
     <record id="action_todo_list_all" model="ir.actions.act_window">
         <field name="name">Todo List</field>
         <field name="res_model">todo.list</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <!-- 10b. Sub-menu: Todo List Incomplete (shows only records where status is not Complete) -->
     <record id="action_todo_list_incomplete" model="ir.actions.act_window">
         <field name="name">Todo List Incomplete</field>
         <field name="res_model">todo.list</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[("status", "!=", "complete")]</field>
     </record>
+    <!-- 10c. Sub-menu: Todo List Complete (shows only records where status is Complete) -->
     <record id="action_todo_list_complete" model="ir.actions.act_window">
         <field name="name">Todo List Complete</field>
         <field name="res_model">todo.list</field>
@@ -53,6 +56,7 @@
         <field name="domain">[("status", "=", "complete")]</field>
     </record>
 
+    <!-- 10a. Sub-menu: Todo List (shows all records) -->
     <menuitem id="menu_todo_root" name="Todo List" sequence="10"/>
     <menuitem id="menu_todo_list" parent="menu_todo_root" action="action_todo_list_all" name="Todo List"/>
     <menuitem id="menu_todo_list_incomplete" parent="menu_todo_root" action="action_todo_list_incomplete" name="Todo List Incomplete"/>
