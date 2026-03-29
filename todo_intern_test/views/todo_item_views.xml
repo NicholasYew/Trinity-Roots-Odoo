@@ -7,7 +7,7 @@
             <tree editable="bottom">
                 <field name="name"/>
                 <field name="is_done"/>
-                <field name="todo_list_id"/>
+                <field name="list_id"/>
             </tree>
         </field>
     </record>
@@ -20,7 +20,7 @@
                     <group>
                         <field name="name"/>
                         <field name="is_done"/>
-                        <field name="todo_list_id"/>
+                        <field name="list_id"/>
                     </group>
                 </sheet>
             </form>
